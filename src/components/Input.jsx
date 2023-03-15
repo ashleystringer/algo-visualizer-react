@@ -7,6 +7,7 @@ export default function Input({ type }) {
     ISSUE - How do I update type (?) state?
     Input fields tend to use refs
     */
+   //REVISIT THIS CODE
     return (
         <InputGroup>
             <InputGroup.Text></InputGroup.Text>

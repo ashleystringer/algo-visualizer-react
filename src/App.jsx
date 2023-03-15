@@ -10,6 +10,8 @@ function App() {
 
   const widthRef = useRef(0);
   const heightRef = useRef(0);
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
   const [astar, setAstar] = useState(null);
   const [dijkstra, setDijkstra] = useState(null);
 
@@ -20,20 +22,32 @@ function App() {
   function handleSubmit(e){
     e.preventDefault();
 
+
+    console.log(`width: ${widthRef.current.value}, height: ${heightRef.current.value}`);
+
+    setWidth(widthRef.current.value);
+    setHeight(heightRef.current.value);
     //dijkstra.play();
+
+    //set width in algo?
+    //set height in algo?
+    //
+    //QUESTION - Is it set directly in the algo instance?
   }
 
   /*
-  <Graph width={width} height={height} algo={algoType}/>
+  <Graph width={widthRed.current.value} height={heightRef.current.value}/>
   */
 
   /*
   ISSUE - 
-    1. I need to find out how to be able to change width and height here to be used in the Graph
-    //and selected algorithm.
+    1. I need to find out how to be able to change width and height here to be used in the Graph.
+      - - 
     2. I need to able to select the algorithm to be used.
+      - - Probably have a select tag to select type of pathfinding algorithm to use.
     3. I need to be able to allow the output of the selected algorithm instance to be
     //rendered in the Graph component.
+      - - How do I do that?
     4. I need to make sure the selected algorithm instance produces an output
     //with a consistent cycle of time. 
   */
@@ -51,11 +65,11 @@ function App() {
             <Form.Label>Height</Form.Label>
             <Form.Control required type='number' ref={heightRef}/>
           </Form.Group>
-          <Button>Start</Button>
+          <Button type='submit'>Start</Button>
         </Stack>
       </Form>
       <br/>
-      <Graph width={widthRef.current.value} height={heightRef.current.value}/>
+      <Graph widthVal={width} heightVal={height}/>
     </div>
   )
 }
