@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useState, useContext } from 'react'
 
 const AlgoContext = React.createContext();
 
@@ -8,8 +8,32 @@ export function useAlgo(){
 
 export function AlgoProvider({children}) {
 
-    const value = {
+    const [selectedAlgo, setSelectedAlgo] = useState();
+    const [speed, setSpeed] = useState(10);
+    const [output, setOutput] = useState();
 
+    function chooseAlgo(algo){
+        setSelectedAlgo(algo);
+    }
+
+    function selectPace(speed){
+        setSpeed(speed);
+    }
+
+    function execute(){
+        setInterval(() => {
+            //execute algo
+            //setOutput();
+        }, speed);
+    }
+
+
+    const value = {
+        setSelectedAlgo,
+        chooseAlgo,
+        selectPace,
+        execute,
+        output
     };
 
     /*

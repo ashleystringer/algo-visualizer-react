@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
+import { useAlgo } from '../contexts/AlgoProvider';
 import Square from './Square';
 
 export default function Graph({widthVal, heightVal}) {
 
+    //const { output } = useAlgo();
     const [width, setWidth] = useState([]);
     const [height, setHeight] = useState([]);
     const [graphArray, setGraphArray] = useState();
+    const [numbers, setNumbers] = useState([1, 2, 3, 4, 5]);
 
     useEffect(() => {
         console.log(`width: ${width}, height: ${height}`);
@@ -36,10 +39,16 @@ export default function Graph({widthVal, heightVal}) {
         }
     }, [widthVal, heightVal]);
 
+    /*useEffect(() => {
+        setGraphArray(createArray(width, height));
+    }, [output]);*/
+
 
     function createArray(widthVal, heightVal){
         
         //POSSIBLY REVISE THIS LATER
+
+        //Use output from useAlgo to revise this
 
         if(widthVal && heightVal){
             let arrayW = new Array(parseInt(widthVal));
@@ -57,6 +66,8 @@ export default function Graph({widthVal, heightVal}) {
         return[];
 
     }
+
+    
 
     /*
         ISSUE - How do I dynamically generate a graph using the graphArray state? 
@@ -88,7 +99,9 @@ export default function Graph({widthVal, heightVal}) {
     return (
         <div>
             {
-            
+                numbers.map(number => {
+                    return(<div>{number}</div>)
+                })
             }
 
             <br/>
